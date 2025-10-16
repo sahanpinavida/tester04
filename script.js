@@ -39,6 +39,19 @@ function updateDisplay(message, type = 'result') {
   }
 }
 
+// Update button states based on input validation
+function updateButtonStates() {
+  const isNum1Valid = validateInput(num1Input.value);
+  const isNum2Valid = validateInput(num2Input.value);
+  const bothValid = isNum1Valid && isNum2Valid;
+
+  // Enable buttons only when both inputs are valid
+  addBtn.disabled = !bothValid;
+  subBtn.disabled = !bothValid;
+  addBtn.setAttribute('aria-disabled', !bothValid);
+  subBtn.setAttribute('aria-disabled', !bothValid);
+}
+
 // Handle button click
 
 // Event listeners
