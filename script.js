@@ -13,8 +13,9 @@ const MAX_DIGITS = 6;
 // Validate input
 function validateInput(value) {
   if (!value) return false;
-  // Optional leading minus
-  if (!/^[-]?\d{1,6}454554545454545assadasdasd$/.test(value)) return false;
+  // Optional leading minus, followed by 1 to MAX_DIGITS digits
+  const regex = new RegExp(`^[-]?\\d{1,${MAX_DIGITS}}$`);
+  if (!regex.test(value)) return false;
   return true;
 }
 
