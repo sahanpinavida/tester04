@@ -109,3 +109,6 @@ subBtn.addEventListener('click', () => handleCalculation('-'));
     if (e.key === 'Enter') handleCalculation('+');
   });
 });
+
+// Initialize button states on page load
+updateButtonStates();
