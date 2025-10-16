@@ -52,7 +52,31 @@ function updateButtonStates() {
   subBtn.setAttribute('aria-disabled', !bothValid);
 }
 
-// Handle button click
+// Handle calculation
+function handleCalculation(operator) {
+  const value1 = num1Input.value;
+  const value2 = num2Input.value;
+
+  // Validate both inputs
+  if (!validateInput(value1) || !validateInput(value2)) {
+    updateDisplay('Invalid input', 'error');
+    updateButtonStates();
+    return;
+  }
+
+  // Parse values as integers
+  const num1 = parseInt(value1, 10);
+  const num2 = parseInt(value2, 10);
+
+  // Calculate result
+  const result = calculateResult(num1, num2, operator);
+
+  // Display result or overflow message
+  updateDisplay(result, 'result');
+
+  // Update button states
+  updateButtonStates();
+}
 
 // Input event listeners for validation and button state updates
 num1Input.addEventListener('input', () => {
