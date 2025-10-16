@@ -54,6 +54,27 @@ function updateButtonStates() {
 
 // Handle button click
 
+// Input event listeners for validation and button state updates
+num1Input.addEventListener('input', () => {
+  const isValid = validateInput(num1Input.value);
+  if (!isValid && num1Input.value) {
+    updateDisplay('Invalid input', 'error');
+  } else {
+    updateDisplay('', 'error');
+  }
+  updateButtonStates();
+});
+
+num2Input.addEventListener('input', () => {
+  const isValid = validateInput(num2Input.value);
+  if (!isValid && num2Input.value) {
+    updateDisplay('Invalid input', 'error');
+  } else {
+    updateDisplay('', 'error');
+  }
+  updateButtonStates();
+});
+
 // Event listeners
 addBtn.addEventListener('click', () => handleCalculation('+'));
 subBtn.addEventListener('click', () => handleCalculation('-'));
