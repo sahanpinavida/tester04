@@ -48,28 +48,21 @@ function handleCalculation(operator) {
 function filterInput(input) {
   const cursorPosition = input.selectionStart;
   const originalValue = input.value;
-  let filteredValue = originalValue;
 
   // Remove any characters that are not digits or minus
-  filteredValue = filteredValue.replace(/[^\d-]/g, '');
+  let filteredValue = originalValue.replace(/[^\d-]/g, '');
 
-  // Ensure minus can only appear at the start
-  if (filteredValue.indexOf('-') > 0) {
-    filteredValue = filteredValue.replace(/-/g, '');
-  }
+  // Handle minus sign: only allow at the start, and only one
+  const hasLeadingMinus = filteredValue.charAt(0) === '-';
+  const digitsOnly = filteredValue.replace(/-/g, '');
+  filteredValue = hasLeadingMinus ? '-' + digitsOnly : digitsOnly;
 
-  // Ensure only one minus sign at the start
-  const minusCount = (filteredValue.match(/-/g) || []).length;
-  if (minusCount > 1) {
-    filteredValue = filteredValue.charAt(0) === '-'
-      ? '-' + filteredValue.slice(1).replace(/-/g, '')
-      : filteredValue.replace(/-/g, '');
-  }
-
-  // Apply filtered value if it changed
+  // Update input value if it changed
   if (filteredValue !== originalValue) {
     input.value = filteredValue;
-    input.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
+    // Adjust cursor position to account for removed characters
+    const newPosition = Math.max(0, cursorPosition - (originalValue.length - filteredValue.length));
+    input.setSelectionRange(newPosition, newPosition);
   }
 }
 
