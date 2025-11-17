@@ -52,6 +52,11 @@ h1 {
   cursor: pointer;
 }
 
+.buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .buttons button:focus {
   outline: 2px solid #007BFF;
 }
