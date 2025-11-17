@@ -23,7 +23,11 @@ function calculateResult(num1, num2, operator) {
   let result = 0;
   if (operator === '+') result = num1 + num2;
   if (operator === '-') result = num1 - num2;
-  if (Math.abs(result) > 999999) return 'Overflow';
+
+  // Check if result string exceeds 7 characters (including minus sign)
+  const resultString = result.toString();
+  if (resultString.length > 7) return 'Overflow';
+
   return result;
 }
 
@@ -38,10 +42,34 @@ function updateDisplay(message, type = 'result') {
   }
 }
 
-// Handle button click
+// Handle button click and perform calculation
 function handleCalculation(operator) {
-  // Placeholder for Step 3 implementation
-  console.log('Calculation requested with operator:', operator);
+  // Get input values
+  const value1 = num1Input.value;
+  const value2 = num2Input.value;
+
+  // Validate both inputs
+  const isValid1 = validateInput(value1);
+  const isValid2 = validateInput(value2);
+
+  // Show error if either input is invalid or empty
+  if (!isValid1 || !isValid2) {
+    updateDisplay('Please enter a valid integer', 'error');
+    return;
+  }
+
+  // Parse values to integers
+  const num1 = parseInt(value1, 10);
+  const num2 = parseInt(value2, 10);
+
+  // Calculate result
+  const result = calculateResult(num1, num2, operator);
+
+  // Display result (either number or 'Overflow')
+  updateDisplay(result, 'result');
+
+  // Update button states (inputs remain unchanged)
+  updateButtonStates();
 }
 
 // Filter input to allow only valid characters (digits and optional leading minus)
