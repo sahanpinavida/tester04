@@ -66,11 +66,21 @@ function filterInput(input) {
   }
 }
 
+// Update button states based on input validation
+function updateButtonStates() {
+  const isNum1Valid = validateInput(num1Input.value);
+  const isNum2Valid = validateInput(num2Input.value);
+  const bothValid = isNum1Valid && isNum2Valid;
+
+  // Enable buttons only when both inputs contain valid integers
+  addBtn.disabled = !bothValid;
+  subBtn.disabled = !bothValid;
+}
+
 // Handle input changes and validate
 function handleInputChange(input) {
   filterInput(input);
-  // Validation state is now detectable via validateInput(input.value)
-  // Button state management will be added in Step 2
+  updateButtonStates();
 }
 
 // Event listeners
@@ -87,3 +97,6 @@ num2Input.addEventListener('input', () => handleInputChange(num2Input));
     if (e.key === 'Enter') handleCalculation('+');
   });
 });
+
+// Initialize button states on page load
+updateButtonStates();
