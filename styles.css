@@ -40,6 +40,10 @@ h1 {
   font-size: 1rem;
 }
 
+.calculator input:focus {
+  outline: 2px solid #007BFF;
+}
+
 .buttons {
   display: flex;
   justify-content: space-around;

@@ -10,6 +10,19 @@ const errorDiv = document.getElementById('error');
 
 const MAX_DIGITS = 6;
 
+// Localization structure for internationalization-ready text
+const LOCALIZATION = {
+  pageTitle: '6-Digit Calculator',
+  label1: 'Number 1:',
+  label2: 'Number 2:',
+  addButton: '+',
+  subtractButton: '-',
+  addButtonLabel: 'Add',
+  subtractButtonLabel: 'Subtract',
+  errorInvalidInteger: 'Please enter a valid integer',
+  overflowMessage: 'Overflow'
+};
+
 // Validate input: accepts optional leading minus followed by 1-6 digits
 function validateInput(value) {
   if (!value) return false;
@@ -26,7 +39,7 @@ function calculateResult(num1, num2, operator) {
 
   // Check if result string exceeds 7 characters (including minus sign)
   const resultString = result.toString();
-  if (resultString.length > 7) return 'Overflow';
+  if (resultString.length > 7) return LOCALIZATION.overflowMessage;
 
   return result;
 }
@@ -54,7 +67,7 @@ function handleCalculation(operator) {
 
   // Show error if either input is invalid or empty
   if (!isValid1 || !isValid2) {
-    updateDisplay('Please enter a valid integer', 'error');
+    updateDisplay(LOCALIZATION.errorInvalidInteger, 'error');
     return;
   }
 
@@ -119,12 +132,39 @@ subBtn.addEventListener('click', () => handleCalculation('-'));
 num1Input.addEventListener('input', () => handleInputChange(num1Input));
 num2Input.addEventListener('input', () => handleInputChange(num2Input));
 
-// Enter key support
+// Enter key support on inputs
 [num1Input, num2Input].forEach(input => {
   input.addEventListener('keypress', e => {
     if (e.key === 'Enter') handleCalculation('+');
   });
 });
 
-// Initialize button states on page load
+// Keyboard support for buttons (Enter and Space)
+addBtn.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    handleCalculation('+');
+  }
+});
+
+subBtn.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    handleCalculation('-');
+  }
+});
+
+// Apply localization to HTML content
+function applyLocalization() {
+  document.querySelector('h1').textContent = LOCALIZATION.pageTitle;
+  document.querySelector('label[for="num1"]').textContent = LOCALIZATION.label1;
+  document.querySelector('label[for="num2"]').textContent = LOCALIZATION.label2;
+  addBtn.textContent = LOCALIZATION.addButton;
+  subBtn.textContent = LOCALIZATION.subtractButton;
+  addBtn.setAttribute('aria-label', LOCALIZATION.addButtonLabel);
+  subBtn.setAttribute('aria-label', LOCALIZATION.subtractButtonLabel);
+}
+
+// Initialize application
+applyLocalization();
 updateButtonStates();
