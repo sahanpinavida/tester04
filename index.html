@@ -9,19 +9,19 @@
 <body>
   <main class="calculator-container">
     <h1>6-Digit Calculator</h1>
-    
+
     <section class="calculator">
       <label for="num1">Number 1:</label>
       <input type="text" id="num1" aria-label="First number input" maxlength="7">
-      
+
       <label for="num2">Number 2:</label>
       <input type="text" id="num2" aria-label="Second number input" maxlength="7">
-      
+
       <div class="buttons">
-        <button id="addBtn" disabled aria-disabled="true">+</button>
-        <button id="subBtn" disabled aria-disabled="true">-</button>
+        <button type="button" id="addBtn" disabled aria-disabled="true">+</button>
+        <button type="button" id="subBtn" disabled aria-disabled="true">-</button>
       </div>
-      
+
       <div id="result" aria-live="polite"></div>
       <div id="error" role="alert"></div>
     </section>
