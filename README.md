@@ -115,3 +115,65 @@ Some browser features work better when served from an HTTP server. Use this meth
 3. Open the URL shown in the terminal (usually `http://localhost:3000` or `http://localhost:8080`)
 
 To stop the server, press `Ctrl+C` in the terminal.
+
+## Usage
+
+### User Interface
+
+The calculator has a simple, intuitive interface with the following components:
+
+- **Number 1 Input**: Enter the first number for your calculation
+- **Number 2 Input**: Enter the second number for your calculation
+- **Operation Buttons**: Click the button for the operation you want to perform
+- **Result Display**: Shows the result of your calculation or an error message
+
+### Input Constraints
+
+- Numbers must be integers (whole numbers)
+- Maximum 6 digits per input (values from -999999 to 999999)
+- Negative numbers are supported (use a leading minus sign, e.g., -123)
+- Results exceeding 6 digits will display "Overflow"
+
+### Examples
+
+The following examples demonstrate how to use the calculator with different operations.
+
+#### Addition (Available Now)
+
+| Number 1 | Number 2 | Operation | Result |
+|----------|----------|-----------|--------|
+| 1234 | 5678 | + | 6912 |
+| 100 | -50 | + | 50 |
+| 999999 | 0 | + | 999999 |
+| 500000 | 500000 | + | Overflow |
+
+#### Subtraction (Available Now)
+
+| Number 1 | Number 2 | Operation | Result |
+|----------|----------|-----------|--------|
+| 5000 | 1234 | - | 3766 |
+| 100 | 250 | - | -150 |
+| -100 | -50 | - | -50 |
+| -999999 | 1 | - | Overflow |
+
+#### Multiplication (Coming Soon)
+
+| Number 1 | Number 2 | Operation | Result |
+|----------|----------|-----------|--------|
+| 123 | 45 | * | 5535 |
+| 1000 | 1000 | * | Overflow |
+
+#### Division (Coming Soon)
+
+| Number 1 | Number 2 | Operation | Result |
+|----------|----------|-----------|--------|
+| 100 | 4 | / | 25 |
+| 99 | 10 | / | 9 |
+
+### Error Handling
+
+The calculator validates your input as you type:
+
+- **Invalid input**: Displayed when non-numeric characters are entered
+- **Overflow**: Displayed when the result exceeds the 6-digit limit (greater than 999999 or less than -999999)
+- **Disabled buttons**: Operation buttons are disabled until both inputs contain valid numbers
