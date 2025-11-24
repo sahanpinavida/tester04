@@ -3,10 +3,14 @@
 // Select DOM elements
 const num1Input = document.getElementById('num1');
 const num2Input = document.getElementById('num2');
+const num1Error = document.getElementById('num1-error');
+const num2Error = document.getElementById('num2-error');
 const addBtn = document.getElementById('addBtn');
 const subBtn = document.getElementById('subBtn');
 const resultDiv = document.getElementById('result');
 const errorDiv = document.getElementById('error');
+
+const VALIDATION_ERROR_MESSAGE = 'Please enter valid numbers (up to 6 digits).';
 
 const MAX_DIGITS = 6;
 
@@ -52,6 +56,11 @@ function updateButtonStates() {
   subBtn.setAttribute('aria-disabled', !bothValid);
 }
 
+// Update per-field error message display
+function updateFieldError(errorElement, showError) {
+  errorElement.textContent = showError ? VALIDATION_ERROR_MESSAGE : '';
+}
+
 // Handle calculation
 function handleCalculation(operator) {
   const value1 = num1Input.value;
@@ -81,22 +90,27 @@ function handleCalculation(operator) {
 // Input event listeners for validation and button state updates
 num1Input.addEventListener('input', () => {
   const isValid = validateInput(num1Input.value);
-  if (!isValid && num1Input.value) {
-    updateDisplay('Invalid input', 'error');
-  } else {
-    updateDisplay('', 'error');
-  }
+  // Show error for invalid non-empty input, clear when valid
+  updateFieldError(num1Error, !isValid && num1Input.value);
   updateButtonStates();
 });
 
 num2Input.addEventListener('input', () => {
   const isValid = validateInput(num2Input.value);
-  if (!isValid && num2Input.value) {
-    updateDisplay('Invalid input', 'error');
-  } else {
-    updateDisplay('', 'error');
-  }
+  // Show error for invalid non-empty input, clear when valid
+  updateFieldError(num2Error, !isValid && num2Input.value);
   updateButtonStates();
+});
+
+// Blur event listeners to show error when field is empty after losing focus
+num1Input.addEventListener('blur', () => {
+  const isValid = validateInput(num1Input.value);
+  updateFieldError(num1Error, !isValid);
+});
+
+num2Input.addEventListener('blur', () => {
+  const isValid = validateInput(num2Input.value);
+  updateFieldError(num2Error, !isValid);
 });
 
 // Event listeners
