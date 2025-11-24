@@ -177,3 +177,97 @@ The calculator validates your input as you type:
 - **Invalid input**: Displayed when non-numeric characters are entered
 - **Overflow**: Displayed when the result exceeds the 6-digit limit (greater than 999999 or less than -999999)
 - **Disabled buttons**: Operation buttons are disabled until both inputs contain valid numbers
+
+## Contributing
+
+We welcome contributions to the 6-Digit Calculator! This section explains how to contribute effectively.
+
+### How to Contribute
+
+1. **Fork the repository**: Click the "Fork" button on the GitHub repository page
+2. **Clone your fork**:
+   ```
+   git clone https://github.com/YOUR-USERNAME/6-digit-calculator.git
+   ```
+3. **Create a branch**: Create a new branch for your changes (see branch naming below)
+4. **Make your changes**: Implement your feature or fix
+5. **Commit your changes**: Follow the commit message conventions below
+6. **Push to your fork**: Push your branch to your forked repository
+7. **Open a Pull Request**: Submit a PR from your branch to the main repository
+
+### Coding Standards
+
+Please follow these coding standards to maintain consistency with the existing codebase:
+
+**JavaScript (script.js)**
+- Use `"use strict";` at the top of JavaScript files
+- Write clean, readable, and modular code
+- Each function should handle a single responsibility
+- Use descriptive variable and function names
+- Add inline comments to explain key logic
+- No external libraries or frameworks
+
+**HTML (index.html)**
+- Follow semantic HTML structure
+- Use appropriate ARIA attributes for accessibility
+- Use descriptive labels and IDs
+
+**CSS (styles.css)**
+- Organize styles with class-based selectors
+- Use consistent indentation (2 spaces)
+- Group related styles together
+- Keep the design responsive
+
+### Commit Message Conventions
+
+Write clear and meaningful commit messages:
+
+- **Subject line**: Use imperative mood, keep under 50 characters
+  - Good: "Add multiplication operation"
+  - Bad: "Added multiplication" or "Adding multiplication operation to calculator"
+- **Body** (optional): Explain what and why, wrap at 72 characters
+- **Reference issues**: Include issue numbers when applicable (e.g., "Fix #42")
+
+**Examples:**
+```
+Add input validation for negative numbers
+
+Implement validation logic to handle negative number inputs
+correctly. This ensures the minus sign is only accepted at
+the start of the number.
+
+Fixes #15
+```
+
+```
+Fix overflow detection for subtraction
+```
+
+### Branch Naming Strategy
+
+Use descriptive branch names with the following prefixes:
+
+- `feature/` - New features (e.g., `feature/42-add-multiplication`)
+- `fix/` - Bug fixes (e.g., `fix/15-negative-number-validation`)
+- `docs/` - Documentation changes (e.g., `docs/update-readme`)
+- `refactor/` - Code refactoring (e.g., `refactor/simplify-validation`)
+
+Include the issue number when applicable: `feature/123-feature-description`
+
+### Issue and Pull Request Templates
+
+To help maintain quality contributions, please use our templates:
+
+- [Issue Template](.github/ISSUE_TEMPLATE.md) - For reporting bugs or requesting features
+- [Pull Request Template](.github/PULL_REQUEST_TEMPLATE.md) - For submitting changes
+
+### Future Enhancements
+
+The following community standards are planned for future implementation:
+
+- **CODE_OF_CONDUCT.md** - Community behavior guidelines
+- **SECURITY.md** - Security policy and vulnerability reporting
+
+### Questions?
+
+If you have questions about contributing, please open an issue with the "Question" label.
