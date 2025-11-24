@@ -66,9 +66,14 @@ function handleCalculation(operator) {
   const value1 = num1Input.value;
   const value2 = num2Input.value;
 
-  // Validate both inputs
-  if (!validateInput(value1) || !validateInput(value2)) {
-    updateDisplay('Invalid input', 'error');
+  // Check validation state for each field
+  const isNum1Valid = validateInput(value1);
+  const isNum2Valid = validateInput(value2);
+
+  // Show per-field errors if validation fails
+  if (!isNum1Valid || !isNum2Valid) {
+    updateFieldError(num1Error, !isNum1Valid);
+    updateFieldError(num2Error, !isNum2Valid);
     updateButtonStates();
     return;
   }
@@ -80,7 +85,7 @@ function handleCalculation(operator) {
   // Calculate result
   const result = calculateResult(num1, num2, operator);
 
-  // Display result or overflow message
+  // Display result (includes overflow message from calculateResult)
   updateDisplay(result, 'result');
 
   // Update button states
