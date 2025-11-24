@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" width="400" height="350">
+  <!-- Background -->
+  <rect width="400" height="350" fill="#f4f4f4"/>
+
+  <!-- Calculator Container -->
+  <rect x="50" y="25" width="300" height="300" rx="8" fill="#ffffff"
+        filter="drop-shadow(0 0 10px rgba(0,0,0,0.1))"/>
+
+  <!-- Title -->
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="20" font-weight="bold" fill="#333">6-Digit Calculator</text>
+
+  <!-- Number 1 Label -->
+  <text x="75" y="100" font-family="Arial, sans-serif" font-size="14" fill="#333">Number 1:</text>
+
+  <!-- Number 1 Input -->
+  <rect x="75" y="108" width="250" height="35" rx="4" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="85" y="132" font-family="Arial, sans-serif" font-size="16" fill="#333">1234</text>
+
+  <!-- Number 2 Label -->
+  <text x="75" y="165" font-family="Arial, sans-serif" font-size="14" fill="#333">Number 2:</text>
+
+  <!-- Number 2 Input -->
+  <rect x="75" y="173" width="250" height="35" rx="4" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="85" y="197" font-family="Arial, sans-serif" font-size="16" fill="#333">5678</text>
+
+  <!-- Buttons -->
+  <rect x="120" y="225" width="60" height="40" rx="4" fill="#e0e0e0" stroke="#ccc" stroke-width="1"/>
+  <text x="150" y="252" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="20" fill="#333">+</text>
+
+  <rect x="220" y="225" width="60" height="40" rx="4" fill="#e0e0e0" stroke="#ccc" stroke-width="1"/>
+  <text x="250" y="252" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="20" fill="#333">-</text>
+
+  <!-- Result -->
+  <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="20" font-weight="bold" fill="#333">6912</text>
+</svg>

@@ -1,6 +1,12 @@
 # 6-Digit Calculator
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A simple web-based calculator that performs basic arithmetic operations. Built with HTML, CSS, and vanilla JavaScript, this lightweight application runs entirely in the browser with no backend dependencies.
+
+![Screenshot of the 6-Digit Calculator interface showing two input fields, operation buttons, and result display](assets/calculator-screenshot.svg)
+
+*The calculator interface with Number 1 and Number 2 input fields, addition and subtraction buttons, and the calculated result.*
 
 ## Overview
 
@@ -271,3 +277,20 @@ The following community standards are planned for future implementation:
 ### Questions?
 
 If you have questions about contributing, please open an issue with the "Question" label.
+
+## Changelog
+
+For a detailed list of changes, new features, and bug fixes, see the [CHANGELOG.md](CHANGELOG.md) file.
+
+### Roadmap
+
+Planned features for future releases:
+
+- Multiplication operation (*)
+- Division operation (/)
+- Keyboard shortcuts for operations
+- History of recent calculations
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
