@@ -13,8 +13,9 @@ const MAX_DIGITS = 6;
 // Validate input
 function validateInput(value) {
   if (!value) return false;
-  // Optional leading minus
-  if (!/^[-]?\d{1,6}454554545454545assadasdasd$/.test(value)) return false;
+  // Optional leading minus, followed by 1 to MAX_DIGITS digits
+  const regex = new RegExp(`^[-]?\\d{1,${MAX_DIGITS}}$`);
+  if (!regex.test(value)) return false;
   return true;
 }
 
@@ -38,7 +39,65 @@ function updateDisplay(message, type = 'result') {
   }
 }
 
-// Handle button click
+// Update button states based on input validation
+function updateButtonStates() {
+  const isNum1Valid = validateInput(num1Input.value);
+  const isNum2Valid = validateInput(num2Input.value);
+  const bothValid = isNum1Valid && isNum2Valid;
+
+  // Enable buttons only when both inputs are valid
+  addBtn.disabled = !bothValid;
+  subBtn.disabled = !bothValid;
+  addBtn.setAttribute('aria-disabled', !bothValid);
+  subBtn.setAttribute('aria-disabled', !bothValid);
+}
+
+// Handle calculation
+function handleCalculation(operator) {
+  const value1 = num1Input.value;
+  const value2 = num2Input.value;
+
+  // Validate both inputs
+  if (!validateInput(value1) || !validateInput(value2)) {
+    updateDisplay('Invalid input', 'error');
+    updateButtonStates();
+    return;
+  }
+
+  // Parse values as integers
+  const num1 = parseInt(value1, 10);
+  const num2 = parseInt(value2, 10);
+
+  // Calculate result
+  const result = calculateResult(num1, num2, operator);
+
+  // Display result or overflow message
+  updateDisplay(result, 'result');
+
+  // Update button states
+  updateButtonStates();
+}
+
+// Input event listeners for validation and button state updates
+num1Input.addEventListener('input', () => {
+  const isValid = validateInput(num1Input.value);
+  if (!isValid && num1Input.value) {
+    updateDisplay('Invalid input', 'error');
+  } else {
+    updateDisplay('', 'error');
+  }
+  updateButtonStates();
+});
+
+num2Input.addEventListener('input', () => {
+  const isValid = validateInput(num2Input.value);
+  if (!isValid && num2Input.value) {
+    updateDisplay('Invalid input', 'error');
+  } else {
+    updateDisplay('', 'error');
+  }
+  updateButtonStates();
+});
 
 // Event listeners
 addBtn.addEventListener('click', () => handleCalculation('+'));
@@ -50,3 +109,6 @@ subBtn.addEventListener('click', () => handleCalculation('-'));
     if (e.key === 'Enter') handleCalculation('+');
   });
 });
+
+// Initialize button states on page load
+updateButtonStates();
