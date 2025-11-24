@@ -12,10 +12,12 @@
 
     <section class="calculator">
       <label for="num1">Number 1:</label>
-      <input type="text" id="num1" aria-label="First number input" maxlength="7">
+      <input type="text" id="num1" aria-label="First number input" aria-describedby="num1-error" maxlength="7">
+      <div id="num1-error" class="field-error" role="alert" aria-live="polite"></div>
 
       <label for="num2">Number 2:</label>
-      <input type="text" id="num2" aria-label="Second number input" maxlength="7">
+      <input type="text" id="num2" aria-label="Second number input" aria-describedby="num2-error" maxlength="7">
+      <div id="num2-error" class="field-error" role="alert" aria-live="polite"></div>
 
       <div class="buttons">
         <button type="button" id="addBtn" disabled aria-disabled="true">+</button>

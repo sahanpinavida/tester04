@@ -67,3 +67,10 @@ h1 {
   color: red;
   font-size: 0.9rem;
 }
+
+.field-error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  min-height: 1.2em;
+}
