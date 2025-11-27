@@ -2,6 +2,8 @@
 
 A simple web-based calculator that performs basic arithmetic operations on numbers up to 6 digits. Built with HTML, CSS, and vanilla JavaScript with no external frameworks or dependencies.
 
+The application runs entirely client-side with no backend requirements, making it easy to deploy on any static hosting service such as GitHub Pages, Netlify, or a simple web server.
+
 ## Features
 
 - Addition and subtraction operations
